@@ -18,6 +18,7 @@ pipeline {
         
         stage("final deployment") {
             # Specify all commands for deploying the app to Elasticbeanstalk
+            echo "Deploying to Elasticbeanstalk
         }
     }
 }

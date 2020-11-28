@@ -4,20 +4,26 @@ pipeline {
     stages {
         
         stage("builing image") {    
-            sh '''
-            #!/bin/bash
-            docker build -t singhabhinav/react-project -f Dockerfile_dev .
-            '''
+            steps {
+                sh '''
+                #!/bin/bash
+                docker build -t singhabhinav/react-project -f Dockerfile_dev .
+                '''
+            }
         }
         stage("Run unit testcases") {    
-            sh '''
-            #!/bin/bash
-            docker run -e CI=true singhabhinav/react-project npm run test
-            '''
+            steps {
+                sh '''
+                #!/bin/bash
+                docker run -e CI=true singhabhinav/react-project npm run test
+                '''
+            }
         }
         
         stage("final deployment") {
-            echo "Deploying to Elasticbeanstalk"
+            steps {
+                echo "Deploying to Elasticbeanstalk"
+            }
         }
     }
 }

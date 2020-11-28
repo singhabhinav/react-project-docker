@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage("builing image") {    
+            sh '''
+            #!/bin/bash
+            docker build -t singhabhinav/react-project -f Dockerfile_dev .
+            '''
+        }
+        stage("Run unit testcases") {    
+            sh '''
+            #!/bin/bash
+            docker run -e CI=true singhabhinav/react-project npm run test
+            '''
+        }
+        
+        stage("final deployment") {
+            # Specify all commands for deploying the app to Elasticbeanstalk
+        }
+    }
+}

@@ -17,7 +17,7 @@ pipeline {
         }
         
         stage("final deployment") {
-            echo "Deploying to Elasticbeanstalk
+            echo "Deploying to Elasticbeanstalk"
         }
     }
 }
